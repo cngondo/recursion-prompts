@@ -34,10 +34,30 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+
+	if(array.length === 0){		
+		return 0;	
+	} else if(Array.isArray(array[0])){	
+		return 
+	}
+
+	return array[0] + sum(array.slice(1));
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+	// Base Cases
+	if(n === 0){
+		return true;
+	} else if(n === 1){
+		return false;
+	}
+	//Check for negative numbers
+	if(n < 0){
+		return isEven(n + 2);
+	}
+
+	return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
@@ -80,6 +100,7 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or

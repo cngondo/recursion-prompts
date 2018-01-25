@@ -77,7 +77,7 @@ var sumBelow = function(n) {
 var range = function(x, y) {
 	if(x > y){
 		if(x - 1 === y || x === y){
-			return []
+			return [];
 		}
 		return [x-1].concat(range(x-1,y));
 	}
@@ -93,6 +93,13 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+	if(exp === 0){
+		return 1; 
+	} else if(exp < 0){
+		return 1 / exponent(base, -exp); 
+	}
+
+	return base * exponent(base, exp - 1);	
 };
 
 // 8. Determine if a number is a power of two.
@@ -100,6 +107,13 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+	if(n === 1){
+		return true;
+	}
+	if(n % 2 != 0 || n === 0){
+		return false;
+	}
+	return powerOfTwo(n / 2);
 };
 
 // 9. Write a function that reverses a string.
@@ -108,6 +122,21 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+	var strArray = string.split("");
+
+	if(string.length === 0 || string.length === 1){
+		return true;
+	}
+
+	if(string.length === 2){
+		if(strArray[0] = strArray[1]){
+			return true;
+		}else{
+			return false;
+		}
+	}	
+
+	return palindrome(string.slice(0, -1));
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -135,6 +164,7 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+
 };
 
 // 15. Write a function that compares each character of two strings and returns true if

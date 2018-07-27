@@ -21,15 +21,17 @@ var factorial = function(n) {
 var sum = function(array) {
 	//base case
 	//stop when array has no elements
-	if(!array.length){
-		return 0;
-	}
+	// if(!array.length){
+	// 	return 0;
+	// }
 	//recursive call
 	//addition of each element to the previous one
 	//array[0] + array[1] + .... + array[array.length-1]
 	// reduce array elements upto the last one
 	// array.slice(1)
-	return array[0] + sum(array.slice(1));
+	// return array[0] + sum(array.slice(1));
+
+	return (!array.length) ? 0 : array[0] + sum(array.slice(1)); 
 };
 
 // 3. Sum all numbers in an array containing nested arrays.

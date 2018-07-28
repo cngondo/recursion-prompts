@@ -75,17 +75,24 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+// range(10, 4) // [5,6,7,8,9]
 var range = function(x, y) {
-	if(x > y){
-		if(x - 1 === y || x === y){
+	// base case
+		//Return empty array if no number is in range
+		if(x === y || x + 1 === y){ 
 			return [];
 		}
-		return [x-1].concat(range(x-1,y));
-	}
-	if(x === y || x + 1 === y){
-		return [];
-	}
-	return [x+1].concat(range(x+1,y));
+		//cater for x being greater than y
+		if(x > y){
+			if(x - 1 === y){
+				return [];
+			}
+			//Decrement our x value if x > y
+			return [x - 1].concat(range(x - 1, y));
+		}
+	// recursive call
+		//Increment our x value
+		return [x + 1].concat(range(x + 1, y));//add elements to our array
 };
 
 // 7. Compute the exponent of a number.
@@ -99,7 +106,6 @@ var exponent = function(base, exp) {
 	} else if(exp < 0){
 		return 1 / exponent(base, -exp); 
 	}
-
 	return base * exponent(base, exp - 1);	
 };
 
@@ -173,6 +179,7 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
+
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
